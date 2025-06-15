@@ -1,0 +1,29 @@
+version: 2
+
+sources:
+  - name: raw
+    schema: raw
+    tables:
+      - name: fixtures
+        identifier: fixtures
+
+      - name: player_possession_stats
+        identifier: player_possession_stats
+
+      - name: player_salaries
+        identifier: player_salaries
+
+      - name: player_stats
+        identifier: player_stats
+
+      - name: standings
+        identifier: standings
+
+      - name: team_possession_stats
+        identifier: team_possession_stats
+
+      - name: team_salary
+        identifier: team_salary
+
+      - name: team_stats
+        identifier: team_stats

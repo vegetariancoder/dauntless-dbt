@@ -1,0 +1,69 @@
+version: 2
+
+models:
+  - name: bronze_fixtures
+    columns:
+      - name: Fixture_ID
+        tests:
+          - unique:
+              config:
+                severity: warn
+          - not_null:
+              config:
+                severity: error
+
+      - name: ViewersHeadCount
+        tests:
+          - dbt_utils.expression_is_true:
+                expression: "> 0"
+
+
+
+  - name: bronze_player_possession_stats
+    columns:
+
+     - name: Player_Possesion_ID
+       description: Primary key for Player Possession Table
+       tests:
+         - unique
+         - not_null
+
+     - name: main_position
+       description: Player Position
+       tests:
+         - accepted_values:
+             values: ['FW','DF','MF','GK']
+
+     - name: secondary_position
+       description: Player Secondary Position
+       tests:
+         - accepted_values:
+             values: [ 'FW','DF','MF','GK' ]
+     - name: age
+       tests:
+         - dbt_utils.expression_is_true:
+             expression: "> 0"
+
+
+
+  - name: bronze_player_salaries
+    columns:
+      - name: Salary_ID
+        tests:
+          - unique
+          - not_null
+      - name: Weekly_Salary
+        tests:
+          - dbt_utils.expression_is_true:
+              expression: "> 0"
+      - name: Annual_Salary
+        tests:
+          - dbt_utils.expression_is_true:
+              expression: "> 0"
+
+  - name: bronze_player_stats
+    columns:
+      - name: born
+        tests:
+          - dbt_utils.expression_is_true:
+                expression: "> 1980"
