@@ -23,6 +23,7 @@ This project is a **modular analytics pipeline** built using **[dbt](https://www
 
 ## 📁 File & Folder Structure
 
+![dbt Model Lineage](https://github.com/vegetariancoder/dauntless-dbt/raw/main/images/Lineage.png)
 
 ```bash
 dbt_football_project/
