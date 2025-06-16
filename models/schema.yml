@@ -67,3 +67,20 @@ models:
         tests:
           - dbt_utils.expression_is_true:
                 expression: "> 1980"
+
+  - name: silver_fixtures_cleaned
+    tests:
+      - dbt_expectations.expect_table_row_count_to_equal:
+          value: 380
+
+  - name: silver_fixtures_cleaned
+    columns:
+      - name: Fixture_ID
+        tests:
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: int
+      - name: MatchDate
+        tests:
+          - dbt_expectations.expect_column_values_to_be_in_type_list:
+              column_type_list: [ date, datetime ]
+
